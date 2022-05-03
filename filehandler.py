@@ -14,28 +14,31 @@ def get_wav_files(path):
 
 # Archives image directory as .zip files and places them in 'zips' directory
 def zip_files():
-    # Check for 'zips directory
+    # Check for `zips` directory
     # Create directory if none exists
     if not os.path.isdir('zips'):
         os.mkdir('zips')
 
     # Navigate through 'images' directory
-    for root, folderNames, fileNames in os.walk('images', topdown=False):
-        print('root: ' + str(root))
-        print('folders: ' + str(folderNames))
-        print('files:  ' + str(fileNames))
+    image_count = 0
+    while(os.path.isdir('images'+str(image_count))):
+        for root, folderNames, fileNames in os.walk('images'+str(image_count), topdown=False):
+            print('root: ' + str(root))
+            print('folders: ' + str(folderNames))
+            print('files:  ' + str(fileNames))
 
-        # Condition to keep from zipping root 'images' directory
-        if len(folderNames) == 0:
+            # Condition to keep from zipping root 'images' directory
+            if len(folderNames) == 0:
 
-            # Create new archive in 'zips' directory for each subdirectory of 'images'
-            print('Creating Archive: ' + root[-1:] + '.zip')
-            with ZipFile('zips\\' + root[-1:] + '.zip', 'w') as zipObj:
-                for file in fileNames:
-                    print('Archiving: ' + str(file))
-                    file_path = os.path.join(root, file)
-                    zipObj.write(file_path, basename(file_path))
-                zipObj.close()
+                # Create new archive in 'zips' directory for each subdirectory of 'images'
+                print('Creating Archive: ' + root[-1:] + '.zip')
+                with ZipFile('zips\\' + root[-1:] + '.zip', 'w') as zipObj:
+                    for file in fileNames:
+                        print('Archiving: ' + str(file))
+                        file_path = os.path.join(root, file)
+                        zipObj.write(file_path, basename(file_path))
+                    zipObj.close()
+        image_count += 1
 
 
 # Removes 'images' and 'zips' directories
