@@ -37,7 +37,7 @@ def make_spectrogram(file_path, destination_folder):
     # Save spectrogram image
     image_name = file_name[:-4] + '.png'
     print('Writing ' + image_name + ' to ' + destination_folder)
-    plt.savefig(destination_folder + image_name, bbox_inches='tight', pad_inches=0)
+    plt.savefig(os.path.join(destination_folder, image_name), bbox_inches='tight', pad_inches=0)
 
 
 if __name__ == '__main__':

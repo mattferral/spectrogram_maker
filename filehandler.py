@@ -14,7 +14,7 @@ def get_wav_files(path):
 
 # Archives image directory as .zip files and places them in 'zips' directory
 def zip_files():
-    # Check for 'zips directory
+    # Check for `zips` directory
     # Create directory if none exists
     if not os.path.isdir('zips'):
         os.mkdir('zips')

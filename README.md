@@ -17,7 +17,7 @@ containing .wav files
 
 ## Work to be had
 - finish clean_up() in filehandler.py
-- Spectrograms of audio files less than 10 seconds should go flat after their duration show some unexpected artifacts
+- Spectrogram images of audio files less than 10 seconds should go flat after their duration show some unexpected artifacts
 - Take 10 second clip of files greater than 10 seconds instead of first 10 seconds to give better context of the sound 
 being classified
 - add command line options to:
