@@ -6,6 +6,10 @@ import filehandler
 
 
 def make_spectrograms(path=os.path.join(os.getcwd(), 'assets')):
+    # Creates 'images' directory if not already there
+    if not os.path.isdir('images'):
+        os.mkdir('images')
+
     # .wav file paths
     files = filehandler.get_wav_files(path)
 
@@ -17,8 +21,7 @@ def make_spectrograms(path=os.path.join(os.getcwd(), 'assets')):
         if image_count >= 500:
             folder_num += 1
             image_count = 0
-        spectrogram.make_spectrogram(
-            file, os.path.join('images' + str(folder_num)))
+        spectrogram.make_spectrogram(file, os.path.join('images/', str(folder_num)))
         image_count += 1
 
 
